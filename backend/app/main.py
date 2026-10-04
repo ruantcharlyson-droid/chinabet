@@ -45,7 +45,7 @@ class Audit(Base):
     created_at:Mapped[datetime]=mapped_column(DateTime(timezone=True),default=lambda:datetime.now(timezone.utc),index=True)
 Base.metadata.create_all(engine)
 
-app=FastAPI(title="ChinaBet MVP v14",docs_url="/docs" if ENV!="production" else None,redoc_url=None)
+app=FastAPI(title="ChinaBet MVP v14",docs_url="/docs",redoc_url=None)
 app.add_middleware(CORSMiddleware,
  allow_origins=os.getenv("ALLOWED_ORIGINS","http://localhost:8080").split(","),
  allow_credentials=False,allow_methods=["GET","POST","PATCH"],allow_headers=["Authorization","Content-Type","X-Correlation-ID"])
