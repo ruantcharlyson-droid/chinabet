@@ -17,16 +17,16 @@ main{padding:25px;max-width:1250px;width:100%;margin:auto}.hero{border-radius:14
 </style>
 </head>
 <body>
-<header><div class="logo">China<span>Bet</span> ♛</div><div><button class="btn">Entrar</button><button class="btn green">Cadastrar</button></div></header>
+<header><div class="logo">China<span>Bet</span> ♛</div><div><button class="btn" onclick="openModal('login')">Entrar</button><button class="btn green" onclick="openModal('register')">Cadastrar</button></div></header>
 <div class="layout">
 <aside>
-<div class="nav active">⌂ &nbsp; Início</div><div class="nav">⚽ &nbsp; Esportes</div><div class="nav">♤ &nbsp; Cassino</div><div class="nav">◉ &nbsp; Ao Vivo</div><div class="nav">🎁 &nbsp; Promoções</div><div class="nav">◯ &nbsp; Suporte</div>
+<div class="nav active">⌂ &nbsp; Início</div><div class="nav" onclick="showGames()">⚽ &nbsp; Esportes</div><div class="nav">♤ &nbsp; Cassino</div><div class="nav">◉ &nbsp; Ao Vivo</div><div class="nav">🎁 &nbsp; Promoções</div><div class="nav">◯ &nbsp; Suporte</div>
 <br><div class="nav">🛡️ &nbsp; Jogo Responsável</div>
 </aside>
 <main>
-<section class="hero"><h1>SUA DIVERSÃO<br><span>COMEÇA AQUI!</span></h1><p>Aposte nos seus esportes favoritos, jogue no cassino e viva grandes emoções com a ChinaBet!</p><button class="btn green">Cadastrar Agora</button></section>
+<section class="hero"><h1>SUA DIVERSÃO<br><span>COMEÇA AQUI!</span></h1><p>Aposte nos seus esportes favoritos, jogue no cassino e viva grandes emoções com a ChinaBet!</p><button class="btn green" onclick="openModal('register')">Cadastrar Agora</button></section>
 <div class="cards">
-<div class="card"><div class="icon">⚽</div><b>Esportes</b><p class="muted">Mais de 50 mercados</p></div>
+<div class="card" onclick="showGames()" style="cursor:pointer"><div class="icon">⚽</div><b>Esportes</b><p class="muted">Mais de 50 mercados</p></div>
 <div class="card"><div class="icon">🎰</div><b>Cassino</b><p class="muted">Slots, Roleta e muito mais</p></div>
 <div class="card"><div class="icon">🔴</div><b>Ao Vivo</b><p class="muted">Eventos simulados</p></div>
 <div class="card"><div class="icon">🎁</div><b class="greenText">Promoções</b><p class="muted">Bônus e recompensas</p></div>
@@ -34,7 +34,7 @@ main{padding:25px;max-width:1250px;width:100%;margin:auto}.hero{border-radius:14
 </div>
 <div class="grid">
 <section class="panel"><div class="title">Destaques</div><div class="tabs"><div class="tab selected">⚽ Futebol</div><div class="tab">🏀 Basquete</div><div class="tab">◯ Tênis</div><div class="tab">🏐 Vôlei</div></div>
-<div class="match"><div class="teams"><span class="muted">🇧🇷 Brasileirão Série A</span><br><b>Flamengo</b><br><b>Palmeiras</b></div><div class="muted">Hoje<br>21:30</div><div class="odds"><div class="odd">1<br><b>2.10</b></div><div class="odd">X<br><b>3.40</b></div><div class="odd">2<br><b>3.20</b></div></div></div>
+<div class="match"><div class="teams"><span class="muted">🇧🇷 Brasileirão Série A</span><br><b>Flamengo</b><br><b>Palmeiras</b></div><div class="muted">Hoje<br>21:30</div><div class="odds"><div class="odd" onclick="pickBet('Flamengo','2.10')" style="cursor:pointer">1<br><b>2.10</b></div><div class="odd" onclick="pickBet('Empate','3.40')" style="cursor:pointer">X<br><b>3.40</b></div><div class="odd" onclick="pickBet('Palmeiras','3.20')" style="cursor:pointer">2<br><b>3.20</b></div></div></div>
 <div class="match"><div class="teams"><span class="muted">🏆 Champions League</span><br><b>Real Madrid</b><br><b>Manchester City</b></div><div class="muted">Hoje<br>16:00</div><div class="odds"><div class="odd">1<br><b>2.45</b></div><div class="odd">X<br><b>3.60</b></div><div class="odd">2<br><b>2.60</b></div></div></div>
 <div class="match"><div class="teams"><span class="muted">🇧🇷 Copa do Brasil</span><br><b>São Paulo</b><br><b>Corinthians</b></div><div class="muted">Hoje<br>19:00</div><div class="odds"><div class="odd">1<br><b>2.30</b></div><div class="odd">X<br><b>3.30</b></div><div class="odd">2<br><b>3.00</b></div></div></div>
 </section>
@@ -42,4 +42,50 @@ main{padding:25px;max-width:1250px;width:100%;margin:auto}.hero{border-radius:14
 <br><div class="panel"><div class="title">Últimos Resultados</div><p>⚽ Real Madrid &nbsp; <b>2 - 1</b> &nbsp; Barcelona</p><p>🔴 Flamengo &nbsp; <b>1 - 0</b> &nbsp; Fluminense</p><p>🔵 Man. City &nbsp; <b>3 - 1</b> &nbsp; Arsenal</p></div></section>
 </div>
 </main></div>
-</body></html>
+
+<div id="modal" style="display:none;position:fixed;inset:0;background:#000b;z-index:99;align-items:center;justify-content:center">
+<div style="background:#0b1620;border:1px solid #1d2c38;border-radius:14px;padding:25px;width:min(92%,390px)">
+<h2 id="modalTitle" style="margin-top:0;color:#00e887">Entrar</h2>
+<input id="authEmail" type="email" placeholder="E-mail" style="width:100%;padding:13px;margin:7px 0;border-radius:7px;border:1px solid #30404e;background:#071018;color:white">
+<input id="authPassword" type="password" placeholder="Senha (mínimo 10 caracteres)" style="width:100%;padding:13px;margin:7px 0;border-radius:7px;border:1px solid #30404e;background:#071018;color:white">
+<button id="authSubmit" class="btn green" style="width:100%;margin:7px 0" onclick="submitAuth()">Entrar</button>
+<button class="btn" style="width:100%;margin:7px 0" onclick="closeAuth()">Fechar</button>
+<div id="authMsg" class="muted" style="margin-top:10px;text-align:center"></div>
+</div></div>
+<script>
+const API='https://chinabet.onrender.com';
+let authMode='login';
+function openAuth(mode){authMode=mode;document.getElementById('modal').style.display='flex';document.getElementById('modalTitle').textContent=mode==='login'?'Entrar':'Criar conta';document.getElementById('authSubmit').textContent=mode==='login'?'Entrar':'Cadastrar';document.getElementById('authMsg').textContent=''}
+function closeAuth(){document.getElementById('modal').style.display='none'}
+async function submitAuth(){
+ const email=document.getElementById('authEmail').value.trim(), password=document.getElementById('authPassword').value, msg=document.getElementById('authMsg');
+ if(!email||!password){msg.textContent='Preencha e-mail e senha.';return}
+ if(authMode==='register'&&password.length<10){msg.textContent='A senha precisa ter pelo menos 10 caracteres.';return}
+ msg.textContent='Conectando...';
+ try{
+  const r=await fetch(API+(authMode==='login'?'/auth/login':'/auth/register'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})});
+  const data=await r.json().catch(()=>({}));
+  if(!r.ok){msg.textContent=data.detail||'Não foi possível concluir.';return}
+  if(authMode==='register'){authMode='login';msg.textContent='Cadastro realizado. Entrando...';setTimeout(submitAuth,500);return}
+  localStorage.setItem('chinabet_token',data.access_token);msg.textContent='Login realizado!';await showLoggedUser();setTimeout(closeAuth,400);
+ }catch(e){msg.textContent='Erro de conexão com o servidor.'}
+}
+async function showLoggedUser(){
+ const token=localStorage.getItem('chinabet_token');if(!token)return;
+ try{
+  const r=await fetch(API+'/me',{headers:{Authorization:'Bearer '+token}});
+  if(!r.ok){localStorage.removeItem('chinabet_token');return}
+  const u=await r.json();
+  document.getElementById('loginBtn').textContent=u.email;
+  document.getElementById('loginBtn').onclick=()=>alert('Usuário: '+u.email+'\nPerfil: '+u.role);
+  document.getElementById('registerBtn').textContent='Sair';
+  document.getElementById('registerBtn').onclick=logout;
+ }catch(e){}
+}
+async function logout(){
+ const token=localStorage.getItem('chinabet_token');
+ if(token) await fetch(API+'/auth/logout',{method:'POST',headers:{Authorization:'Bearer '+token}}).catch(()=>{});
+ localStorage.removeItem('chinabet_token');location.reload();
+}
+showLoggedUser();
+</script></body></html>
